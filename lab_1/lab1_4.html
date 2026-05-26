@@ -50,7 +50,7 @@
         <input type="number" id="n" step="1" min="2" required>
         <div class="info">Найдёт все простые числа от 2 до n</div>
 
-        <button type="button" id="findBtn">Найти</button>
+        <button type="submit" id="findBtn">Найти</button>
         <textarea id="result" readonly placeholder=""></textarea>
     </form>
 
@@ -79,7 +79,9 @@
             return primes;
         }
 
-        document.getElementById('findBtn').addEventListener('click', function() {
+        document.getElementById('primeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const input = document.getElementById('n');
             const resultArea = document.getElementById('result');
             

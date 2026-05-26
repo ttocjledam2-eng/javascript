@@ -52,7 +52,7 @@
         <input type="number" id="rows" value="5" step="1" min="1" required>
         <div class="info">Результат в консоли</div>
 
-        <button type="button" id="drawBtn">Рисовать</button>
+        <button type="submit" id="drawBtn">Рисовать</button>
     </form>
 
     <script>
@@ -81,7 +81,9 @@
             }
         }
 
-        document.getElementById('drawBtn').addEventListener('click', function() {
+        document.getElementById('tableForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const input = document.getElementById('rows');
             let rowsCount = parseInt(input.value, 10);
             
