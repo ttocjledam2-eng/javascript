@@ -29,13 +29,16 @@
         button:hover {
             background: #5c00b3;
         }
+        input:invalid {
+            border-color: red;
+        }
     </style>
 </head>
 <body>
     <h1>Считать ворон</h1>
     <form id="ravenForm">
         <label>Количество ворон:</label>
-        <input type="number" id="num" required>
+        <input type="number" id="num" min="0" required>
 
         <button type="button" id="countBtn">Считать</button>
     </form>
@@ -69,6 +72,11 @@
 
             if (isNaN(num)) {
                 alert("Введите целое число");
+                return;
+            }
+
+            if (num < 0) {
+                alert("Количество ворон не может быть отрицательным!");
                 return;
             }
 
