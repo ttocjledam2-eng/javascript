@@ -83,8 +83,8 @@ export function fibs(n) {
 
 /**
  * Возвращает новый массив, отсортированный по убыванию, не изменяя исходный
- * @param {number[]} arr - Исходный массив чисел
- * @returns {number[]} Новый массив, отсортированный по убыванию
+ * @param {Array} arr - Исходный массив чисел
+ * @returns {Array} Новый массив, отсортированный по убыванию
  */
 export function arrReverseSorted(arr) {
     return [...arr].sort((a, b) => b - a);
@@ -92,8 +92,8 @@ export function arrReverseSorted(arr) {
 
 /**
  * Возвращает массив уникальных значений из исходного массива
- * @param {any[]} arr - Исходный массив с возможными повторениями
- * @returns {any[]} Массив уникальных значений
+ * @param {Array} arr - Исходный массив с возможными повторениями
+ * @returns {Array} Массив уникальных значений
  */
 export function unique(arr) {
     return [...new Set(arr)];
