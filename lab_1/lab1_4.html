@@ -2,42 +2,106 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Простые числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+        }
+        input, button, textarea {
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            cursor: pointer;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        textarea {
+            resize: vertical;
+            height: 200px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .info {
+            color: #666;
+            font-size: 12px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <form id="primesForm">
-        <label>Введите n: <input type="number" id="n" min="2" required></label>
-        <button type="submit">Найти простые числа</button>
+    <h1>Простые числа</h1>
+    <form id="primeForm">
+        <label>Введите число n (n > 1):</label>
+        <input type="number" id="n" step="1" min="2" required>
+        <div class="info">Найдёт все простые числа от 2 до n</div>
+
+        <button type="button" id="findBtn">Найти</button>
+        <textarea id="result" readonly placeholder="Результат появится здесь..."></textarea>
     </form>
-    <div id="result"></div>
 
     <script>
         'use strict';
 
         function isPrime(num) {
-            if (num < 2) return false;
-            for (let i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i === 0) return false;
+            if (num <= 1) return false;
+            
+            const limit = Math.sqrt(num);
+            for (let i = 2; i <= limit; i++) {
+                if (num % i === 0) {
+                    return false;
+                }
             }
             return true;
         }
 
-        document.getElementById('primesForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const n = parseInt(document.getElementById('n').value);
+        function getPrimesUpTo(n) {
             const primes = [];
-            
             for (let i = 2; i <= n; i++) {
                 if (isPrime(i)) {
                     primes.push(i);
                 }
             }
+            return primes;
+        }
+
+        document.getElementById('findBtn').addEventListener('click', function() {
+            const input = document.getElementById('n');
+            const resultArea = document.getElementById('result');
             
-            document.getElementById('result').innerHTML = primes.length > 0 
-                ? `Простые числа от 2 до ${n}: ${primes.join(', ')}`
-                : `Нет простых чисел в интервале от 2 до ${n}`;
+            let n = parseInt(input.value, 10);
+            
+            if (isNaN(n)) {
+                resultArea.value = "Ошибка: введите число";
+                return;
+            }
+            
+            if (n < 2) {
+                resultArea.value = "Ошибка: n должно быть больше 1";
+                return;
+            }
+            
+            const primes = getPrimesUpTo(n);
+            
+            if (primes.length === 0) {
+                resultArea.value = "Простых чисел в этом диапазоне нет";
+            } else {
+                resultArea.value = `Простые числа от 2 до ${n}:\n${primes.join(', ')}`;
+            }
         });
     </script>
 </body>

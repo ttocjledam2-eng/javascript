@@ -2,49 +2,96 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таблица</title>
+    <title>Таблица животных</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 300px;
+        }
+        input, button {
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .info {
+            color: #666;
+            font-size: 12px;
+            margin-top: -5px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <h1>Таблица животных</h1>
     <form id="tableForm">
-        <label>Количество строк: <input type="number" id="rows" min="1" required></label>
-        <button type="submit">Рисовать</button>
+        <label>Количество строк:</label>
+        <input type="number" id="rows" value="5" step="1" min="1" required>
+        <div class="info">Результат выводится в консоль</div>
+
+        <button type="button" id="drawBtn">Рисовать</button>
     </form>
 
     <script>
         'use strict';
 
-        function generateRow(rowIndex) {
-            const animals = ['dog', 'cat'];
+        const SEQUENCE = ['dog', 'dog', 'dog', 'cat', 'cat'];
+        const COLS = 6;
+
+        function generateRow(startIndex) {
             const row = [];
-            
-            for (let col = 0; col < 6; col++) {
-                let position = (rowIndex * 6 + col) % 5;
-                
-                switch (position) {
-                    case 0:
-                    case 1:
-                    case 2:
-                        row.push('dog');
-                        break;
-                    case 3:
-                    case 4:
-                        row.push('cat');
-                        break;
-                }
+            for (let i = 0; i < COLS; i++) {
+                const seqIndex = (startIndex + i) % SEQUENCE.length;
+                row.push(SEQUENCE[seqIndex]);
             }
-            
-            return row.join('\t');
+            return row.join('\t'); 
         }
 
-        document.getElementById('tableForm').addEventListener('submit', (e) => {
-            e.preventDefault();
+        function drawTable(rowsCount) {
+            console.clear();
             
-            const numRows = parseInt(document.getElementById('rows').value);
-            
-            for (let i = 0; i < numRows; i++) {
-                console.log(generateRow(i));
+            let startIndex = 0;
+            for (let rowNum = 0; rowNum < rowsCount; rowNum++) {
+                const row = generateRow(startIndex);
+                console.log(row);
+                startIndex = (startIndex + 1) % SEQUENCE.length;
             }
+        }
+
+        document.getElementById('drawBtn').addEventListener('click', function() {
+            const input = document.getElementById('rows');
+            let rowsCount = parseInt(input.value, 10);
+            
+            if (isNaN(rowsCount) || rowsCount < 1) {
+                alert("Введите корректное количество строк (число >= 1)");
+                return;
+            }
+            
+            drawTable(rowsCount);
+            alert(`Таблица из ${rowsCount} строк выведена в консоль браузера (F12)`);
         });
     </script>
 </body>
