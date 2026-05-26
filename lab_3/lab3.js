@@ -1,7 +1,6 @@
 'use strict';
 
 import { fib } from '../lab3/lab2_module.js';
-
 /**
  * Возвращает дробную часть числа
  * @param {number} num - Исходное число
@@ -52,7 +51,6 @@ export function truncate(str, maxlength) {
  * @returns {string} Преобразованная строка в camelCase
  */
 export function camelize(str) {
-    if (!str) return '';
     const words = str.split('-');
     for (let i = 1; i < words.length; i++) {
         words[i] = ucFirst(words[i]);
@@ -93,7 +91,7 @@ export function arrReverseSorted(arr) {
 }
 
 /**
- * Возвращает массив уникальных значений из исходного массив
+ * Возвращает массив уникальных значений из исходного массива
  * @param {any[]} arr - Исходный массив с возможными повторениями
  * @returns {any[]} Массив уникальных значений
  */
