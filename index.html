@@ -47,7 +47,7 @@
         .lab-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 30px;
             margin-bottom: 30px;
         }
 
@@ -58,6 +58,7 @@
             border-radius: 16px;
             transition: all 0.2s ease;
             overflow: hidden;
+            padding: 20px;
         }
 
         .lab-item:hover {
@@ -66,18 +67,43 @@
             transform: translateY(-2px);
         }
 
+        .lab-item h2 {
+            font-size: 1.3rem;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #EEF2F5;
+        }
+
+        .lab-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .lab-item li {
+            margin-bottom: 12px;
+        }
+
+        .lab-item li:last-child {
+            margin-bottom: 0;
+        }
+
         .lab-item a {
             display: block;
-            padding: 18px 20px;
+            padding: 10px 12px;
             text-decoration: none;
             color: #1A1A1A;
             font-weight: 500;
             font-size: 1rem;
-            transition: color 0.2s;
+            transition: all 0.2s;
+            border-radius: 8px;
+            background: #F8FAFC;
         }
 
         .lab-item a:hover {
             color: #932eb8;
+            background: #EEF2F5;
+            transform: translateX(4px);
         }
 
         .lab-number {
@@ -113,7 +139,7 @@
         @media (min-width: 640px) {
             .lab-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                gap: 30px;
             }
         }
 
@@ -121,7 +147,7 @@
         @media (min-width: 1024px) {
             .lab-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 28px;
+                gap: 32px;
             }
         }
 
@@ -135,8 +161,11 @@
             h1 {
                 font-size: 1.6rem;
             }
+            .lab-item {
+                padding: 16px;
+            }
             .lab-item a {
-                padding: 14px 16px;
+                padding: 10px 12px;
                 font-size: 0.85rem;
             }
         }
@@ -145,57 +174,53 @@
 <body>
 <div class="container">
     <h1>Лабораторные работы</h1>
-    <div style="text-align: center;">
-       
-    </div>
-    </article>
-    <article class="lab-item">
-    <h2>Лабораторная работа №1</h2>
-    <ul>
-        <li><a href="lab_1/lab1_1.html">Задание 1.1 </a></li>
-        <li><a href="lab_1/lab1_2.html">Задание 1.2 </a></li>
-        <li><a href="lab_1/lab1_3.html">Задание 1.3 </a></li>
-        <li><a href="lab_1/lab1_4.html">Задание 1.4 </a></li>
-        <li><a href="lab_1/lab1_5.html">Задание 1.5 </a></li>
-    </ul>
-    </article>
-
-    </article>
-    <article class="lab-item">
-    <h2>Лабораторная работа №2</h2>
-    <ul>
-        <li><a href="lab_2/lab2test.html">Задание 2 </a></li>
-    </ul>
-    </article>
-
-    </article>
-    <article class="lab-item">
-     <h2>Лабораторная работа №3</h2>
-    <ul>
-        <li><a href="lab_3/lab3test.html">Задание 3</a></li>
-    </ul>
-
-     </article>
-    <article class="lab-item">
-
-    <h2>Лабораторная работа №4</h2>
-    <ul>
-        
-    </ul>
-
-    </article>
-
-    </article>
-    <article class="lab-item">
-    <h2>Лабораторная работа №5</h2>
-    <ul>
-            
-        </ul>
+    <div class="lab-grid">
+        <article class="lab-item">
+            <h2>Лабораторная работа №1</h2>
+            <ul>
+                <li><a href="lab_1/lab1_1.html">Задание 1.1</a></li>
+                <li><a href="lab_1/lab1_2.html">Задание 1.2</a></li>
+                <li><a href="lab_1/lab1_3.html">Задание 1.3</a></li>
+                <li><a href="lab_1/lab1_4.html">Задание 1.4</a></li>
+                <li><a href="lab_1/lab1_5.html">Задание 1.5</a></li>
+            </ul>
         </article>
-    
-        
-    <ul>
+
+        <article class="lab-item">
+            <h2>Лабораторная работа №2</h2>
+            <ul>
+                <li><a href="lab_2/lab2test.html">Задание 2</a></li>
+            </ul>
+        </article>
+
+        <article class="lab-item">
+            <h2>Лабораторная работа №3</h2>
+            <ul>
+                <li><a href="lab_3/lab3test.html">Задание 3</a></li>
+            </ul>
+        </article>
+
+        <article class="lab-item">
+            <h2>Лабораторная работа №4</h2>
+            <ul>
+                <li><em style="color: #999;">Заданий пока нет</em></li>
+            </ul>
+        </article>
+
+        <article class="lab-item">
+            <h2>Лабораторная работа №5</h2>
+            <ul>
+                <li><em style="color: #999;">Заданий пока нет</em></li>
+            </ul>
+        </article>
+
+        <article class="lab-item">
             <h2>Лабораторная работа №6</h2>
-        </ul>
+            <ul>
+                <li><em style="color: #999;">Заданий пока нет</em></li>
+            </ul>
+        </article>
+    </div>
+</div>
 </body>
 </html>
